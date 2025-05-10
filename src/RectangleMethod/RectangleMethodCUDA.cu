@@ -43,7 +43,7 @@ double RectangleMethodCUDA::calculate(FunctionType functionType, double a, doubl
             throw std::runtime_error("Failed to synchronize device: " + std::string(cudaGetErrorString(error)));
         }
 
-        double* h_results = new double[n];
+        auto* h_results = new double[n];
         error = cudaMemcpy(h_results, d_results, n * sizeof(double), cudaMemcpyDeviceToHost);
         if (error != cudaSuccess) {
             delete[] h_results;
