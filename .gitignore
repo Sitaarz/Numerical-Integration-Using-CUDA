@@ -1,0 +1,28 @@
+# Ignoruj pliki generowane przez CLion
+.idea/
+cmake-build-*/
+
+# Ignoruj pliki generowane przez CMake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+conanbuildinfo.cmake
+
+# Ignoruj pliki binarne, wykonywalne i obiektowe
+*.o
+*.obj
+*.so
+*.a
+*.out
+*.exe
+
+# Ignoruj pliki wynikowe generowane przez kompilację CUDA
+*.ptx
+*.cubin
+*.fatbin
+
+# Ignoruj pliki logów i inne tymczasowe
+*.log
+*.tmp
+*.swp
