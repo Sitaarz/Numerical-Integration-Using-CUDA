@@ -12,7 +12,6 @@ typedef double (*DoubleFunctionPtr)(double);
 
 class RectangleMethodCUDA final : public AbstractIntegralCalculator {
 public:
-    RectangleMethodCUDA();
     double calculate(FunctionType functionType, double a, double b, int n) override;
 };
 

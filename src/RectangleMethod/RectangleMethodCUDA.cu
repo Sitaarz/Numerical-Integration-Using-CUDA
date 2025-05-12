@@ -2,14 +2,10 @@
 // Created by Krystian on 10.05.2025.
 //
 
-#ifndef RECTANGLE_METHOD_CUDA
-#define RECTANGLE_METHOD_CUDA
 #include <stdexcept>
 #include <cuda_runtime.h>
 #include "RectangleMethodCUDA.h"
 #include "RectangleKernel.cuh"
-
-RectangleMethodCUDA::RectangleMethodCUDA() : AbstractIntegralCalculator() {}
 
 double RectangleMethodCUDA::calculate(FunctionType functionType, double a, double b, int n) {
     if (n <= 0) {
@@ -61,5 +57,3 @@ double RectangleMethodCUDA::calculate(FunctionType functionType, double a, doubl
 
     return integral;
 }
-#endif
-//RECTANGLE_METHOD_CUDA

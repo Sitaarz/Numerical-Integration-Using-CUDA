@@ -5,12 +5,12 @@
 #include "src/AbstractIntegralCalculator.h"
 
 int main() {
-    std::string method = "";
+    std::string method;
     double a = 0.0f;
     double b = 0.0f;
     int n = 0;
 
-    std::cout << "Set integration method (rectangle): ";
+    std::cout << "Set integration method (rectangle, trapezoidal): ";
     std::cin >> method;
 
     std::cout << "Set lower bound (a): ";
