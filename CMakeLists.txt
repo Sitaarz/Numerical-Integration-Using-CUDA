@@ -12,10 +12,10 @@ add_executable(Numerical_Integration_Using_CUDA main.cu
         src/RectangleMethod/RectangleKernel.cuh
         common/IntegrationMethodFactory.cu
         common/IntegrationMethodFactory.h
-        src/TrapezoidMethod/TrapezoidMethodCUDA.cu
-        src/TrapezoidMethod/TrapezoidMethodCUDA.cuh
-        src/TrapezoidMethod/TrapezoidKernel.cu
-        src/TrapezoidMethod/TrapezoidKernel.cuh
+        src/TrapezoidMethod/TrapezoidalMethodCUDA.cu
+        src/TrapezoidMethod/TrapezoidalMethodCUDA.cuh
+        src/TrapezoidMethod/TrapezoidalKernel.cu
+        src/TrapezoidMethod/TrapezoidalKernel.cuh
         src/TrapezoidMethod/Constants.cuh)
 
 set_target_properties(Numerical_Integration_Using_CUDA PROPERTIES

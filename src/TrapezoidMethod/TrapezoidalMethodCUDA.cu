@@ -2,14 +2,14 @@
 // Created by Krystian on 12.05.2025.
 //
 
-#include "TrapezoidMethodCUDA.cuh"
+#include "TrapezoidalMethodCUDA.cuh"
 
 #include <stdexcept>
 
 #include "TrapezoidKernel.cuh"
 #include "Constants.cuh"
 
-double TrapezoidMethodCUDA::calculate(FunctionType functionType, double a, double b, int n) {
+double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, double b, int n) {
     if (n <= 0) {
         throw std::invalid_argument("n must be positive");
     }

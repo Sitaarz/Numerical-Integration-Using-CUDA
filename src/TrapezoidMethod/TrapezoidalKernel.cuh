@@ -5,7 +5,7 @@
 #ifndef TRAPEZOIDKERNEL_CUH
 #define TRAPEZOIDKERNEL_CUH
 
-#include "TrapezoidKernel.cuh"
+#include "TrapezoidalKernel.cuh"
 #include "../../common/Types.h"
 
 __global__ void trapezoidKernel(FunctionType functionType, double delta, double a, int n, double* results);

@@ -7,7 +7,7 @@
 #include "IntegrationMethodFactory.h"
 #include "Types.h"
 #include "../src/RectangleMethod/RectangleMethodCUDA.h"
-#include "../src/TrapezoidMethod/TrapezoidMethodCUDA.cuh"
+#include "../src/TrapezoidMethod/TrapezoidalMethodCUDA.cuh"
 
 // IntegrationMethodFactory.cu
 std::unique_ptr<AbstractIntegralCalculator> IntegrationMethodFactory::createIntegralCalculator(const std::string& input) {
@@ -17,7 +17,7 @@ std::unique_ptr<AbstractIntegralCalculator> IntegrationMethodFactory::createInte
         case IntegrationMethod::rectangle:
             return std::make_unique<RectangleMethodCUDA>();
         case IntegrationMethod::trapezoidal:
-            return std::make_unique<TrapezoidMethodCUDA>();
+            return std::make_unique<TrapezoidalMethodCUDA>();
         default:
             throw std::invalid_argument("Invalid integral calculator method");
     }

@@ -2,7 +2,7 @@
 // Created by Krystian on 12.05.2025.
 //
 
-#include "TrapezoidKernel.cuh"
+#include "TrapezoidalKernel.cuh"
 #include "Constants.cuh"
 #include "../../common/FunctionStrategy.cuh"
 
