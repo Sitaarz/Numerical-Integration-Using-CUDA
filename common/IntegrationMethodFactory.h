@@ -12,9 +12,9 @@
 
 
 class IntegrationMethodFactory {
+    static IntegrationMethod parseMethodFromInput(const std::string& input);
 public:
     static std::unique_ptr<AbstractIntegralCalculator> createIntegralCalculator(const std::string& input);
-    static IntegrationMethod parseMethodFromInput(const std::string& input);
 };
 
 

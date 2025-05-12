@@ -14,6 +14,7 @@ enum class FunctionType {
 
 enum class IntegrationMethod {
     rectangle,
+    trapezoidal
 };
 
 #endif // TYPES_H

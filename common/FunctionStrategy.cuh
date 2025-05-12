@@ -12,7 +12,7 @@ using DoubleFunctionPtr = double (*)(double);
 __device__ double squareFunction(double x);
 __device__ double cubicFunction(double x);
 
-class FunctionFactory {
+class FunctionStrategy {
 public:
     __device__ static DoubleFunctionPtr getFunctionReference(FunctionType functionType);
 };
