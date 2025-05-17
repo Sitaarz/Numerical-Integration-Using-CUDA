@@ -16,7 +16,7 @@ add_executable(Numerical_Integration_Using_CUDA main.cu
         src/TrapezoidMethod/TrapezoidalMethodCUDA.cuh
         src/TrapezoidMethod/TrapezoidalKernel.cu
         src/TrapezoidMethod/TrapezoidalKernel.cuh
-        src/TrapezoidMethod/Constants.cuh)
+        src/Constants.cuh)
 
 set_target_properties(Numerical_Integration_Using_CUDA PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)

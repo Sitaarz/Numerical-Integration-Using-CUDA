@@ -10,7 +10,7 @@ int main() {
     double b = 0.0f;
     int n = 0;
 
-    std::cout << "Set integration method (rectangle, trapezoidal): ";
+    std::cout << "Set integration method (rectangle, trapezoidal, Monte Carlo): ";
     std::cin >> method;
 
     std::cout << "Set lower bound (a): ";
@@ -19,6 +19,7 @@ int main() {
     std::cout << "Set upper bound (b): ";
     std::cin >> b;
 
+    // TODO in case of Monte Carlo its more like a number of random points
     std::cout << "Set number of intervals (n): ";
     std::cin >> n;
 
