@@ -21,6 +21,7 @@ add_executable(Numerical_Integration_Using_CUDA main.cu
         src/MonteCarloMethod/MonteCarloMethodCUDA.cuh
         src/MonteCarloMethod/MonteCarloKernel.cu
         src/MonteCarloMethod/MonteCarloKernel.cuh
+        common/Utils.h
 )
 set_target_properties(Numerical_Integration_Using_CUDA PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)

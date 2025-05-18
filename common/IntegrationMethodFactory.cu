@@ -9,6 +9,7 @@
 #include "../src/RectangleMethod/RectangleMethodCUDA.h"
 #include "../src/TrapezoidMethod/TrapezoidalMethodCUDA.cuh"
 #include "../src/MonteCarloMethod/MonteCarloMethodCUDA.cuh"
+#include "Utils.h"
 
 // IntegrationMethodFactory.cu
 std::unique_ptr<AbstractIntegralCalculator> IntegrationMethodFactory::createIntegralCalculator(const std::string& input) {
