@@ -4,19 +4,24 @@ project(Numerical_Integration_Using_CUDA CUDA)
 set(CMAKE_CUDA_STANDARD 20)
 
 add_executable(Numerical_Integration_Using_CUDA main.cu
-        src/AbstractIntegralCalculator.h
-        src/RectangleMethod/RectangleMethodCUDA.cu
-        src/RectangleMethod/RectangleKernel.cu
         common/FunctionStrategy.cu
         common/Types.h
-        src/RectangleMethod/RectangleKernel.cuh
+        src/Constants.cuh
+        src/AbstractIntegralCalculator.h
         common/IntegrationMethodFactory.cu
         common/IntegrationMethodFactory.h
+        src/RectangleMethod/RectangleMethodCUDA.cu
+        src/RectangleMethod/RectangleKernel.cu
+        src/RectangleMethod/RectangleKernel.cuh
         src/TrapezoidMethod/TrapezoidalMethodCUDA.cu
         src/TrapezoidMethod/TrapezoidalMethodCUDA.cuh
         src/TrapezoidMethod/TrapezoidalKernel.cu
         src/TrapezoidMethod/TrapezoidalKernel.cuh
-        src/TrapezoidMethod/Constants.cuh)
-
+        src/MonteCarloMethod/MonteCarloMethodCUDA.cu
+        src/MonteCarloMethod/MonteCarloMethodCUDA.cuh
+        src/MonteCarloMethod/MonteCarloKernel.cu
+        src/MonteCarloMethod/MonteCarloKernel.cuh
+        common/Utils.h
+)
 set_target_properties(Numerical_Integration_Using_CUDA PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)

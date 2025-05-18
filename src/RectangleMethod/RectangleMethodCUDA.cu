@@ -6,6 +6,7 @@
 #include <cuda_runtime.h>
 #include "RectangleMethodCUDA.h"
 #include "RectangleKernel.cuh"
+#include "../Constants.cuh"
 
 double RectangleMethodCUDA::calculate(FunctionType functionType, double a, double b, int n) {
     if (n <= 0) {
@@ -23,10 +24,9 @@ double RectangleMethodCUDA::calculate(FunctionType functionType, double a, doubl
             throw std::runtime_error("Failed to allocate device memory: " + std::string(cudaGetErrorString(error)));
         }
 
-        int threadsPerBlock = 256;
-        int blocksPerGrid = (n + threadsPerBlock - 1) / threadsPerBlock;
+        int blocksPerGrid = (n + BLOCK_SIZE - 1) / BLOCK_SIZE;
 
-        rectangleKernel<<<blocksPerGrid, threadsPerBlock>>>(functionType, delta, a, n, d_results);
+        rectangleKernel<<<blocksPerGrid, BLOCK_SIZE>>>(functionType, delta, a, n, d_results);
         error = cudaGetLastError();
         if (error != cudaSuccess) {
             cudaFree(d_results);

@@ -1,15 +1,10 @@
-//
-// Created by Krystian on 12.05.2025.
-//
-
-#include "TrapezoidalMethodCUDA.cuh"
-
 #include <stdexcept>
-
-#include "TrapezoidalKernel.cuh"
+#include <cuda_runtime.h>
+#include "MonteCarloMethodCUDA.cuh"
+#include "MonteCarloKernel.cuh"
 #include "../Constants.cuh"
 
-double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, double b, int n) {
+double MonteCarloMethodCUDA::calculate(FunctionType functionType, double a, double b, int n) {
     if (n <= 0) {
         throw std::invalid_argument("n must be positive");
     }
@@ -18,8 +13,6 @@ double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, dou
     }
 
     double* d_results;
-    double delta = (b - a) / n;
-
     cudaError_t error = cudaMalloc(&d_results, n * sizeof(double));
     if (error != cudaSuccess) {
         throw std::runtime_error("Failed to allocate device memory: " + std::string(cudaGetErrorString(error)));
@@ -27,7 +20,8 @@ double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, dou
 
     int blocksPerGrid = (n + BLOCK_SIZE - 1) / BLOCK_SIZE;
 
-    trapezoidKernel<<<blocksPerGrid, BLOCK_SIZE>>>(functionType, delta, a, n, d_results);
+    monteCarloKernel<<<blocksPerGrid, BLOCK_SIZE>>>(functionType, a, b, n, d_results);
+
     error = cudaGetLastError();
     if (error != cudaSuccess) {
         cudaFree(d_results);
@@ -48,10 +42,12 @@ double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, dou
         throw std::runtime_error("Failed to copy results from device: " + std::string(cudaGetErrorString(error)));
     }
 
-    double integral = 0.0;
+    double sum = 0.0;
     for (int i = 0; i < n; i++) {
-        integral += h_results[i];
+        sum += h_results[i];
     }
+
+    double integral = (b - a) * sum / n;
 
     delete[] h_results;
     cudaFree(d_results);

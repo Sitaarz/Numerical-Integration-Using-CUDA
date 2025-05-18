@@ -3,7 +3,7 @@
 //
 
 #include "TrapezoidalKernel.cuh"
-#include "Constants.cuh"
+#include "../Constants.cuh"
 #include "../../common/FunctionStrategy.cuh"
 
 __global__ void trapezoidKernel(FunctionType functionType, double delta, double a, int n, double *results) {
