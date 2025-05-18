@@ -3,7 +3,8 @@
 
 #include "../AbstractIntegralCalculator.h"
 
-class MonteCarloMethodCUDA final : public AbstractIntegralCalculator {
+class MonteCarloMethodCUDA final: public AbstractIntegralCalculator {
+public:
     double calculate(FunctionType functionType, double a, double b, int n) override;
 };
 

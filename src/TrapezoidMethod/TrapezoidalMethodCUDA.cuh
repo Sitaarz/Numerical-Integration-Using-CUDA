@@ -6,7 +6,8 @@
 #define TRAPEZOIDMETHODCUDA_CUH
 #include "../AbstractIntegralCalculator.h"
 
-class TrapezoidalMethodCUDA: public AbstractIntegralCalculator {
+class TrapezoidalMethodCUDA final: public AbstractIntegralCalculator {
+public:
     double calculate(FunctionType functionType, double a, double b, int n) override;
 };
 
