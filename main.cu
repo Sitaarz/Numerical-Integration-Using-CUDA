@@ -10,7 +10,7 @@ int main() {
     double b = 0.0f;
     int n = 0;
 
-    std::cout << "Set integration method (rectangle, trapezoidal, Monte Carlo): ";
+    std::cout << "Set integration method (Rectangle, Trapezoidal, MonteCarlo): ";
     std::cin >> method;
 
     std::cout << "Set lower bound (a): ";
