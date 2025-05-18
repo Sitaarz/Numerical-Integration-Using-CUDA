@@ -27,11 +27,13 @@ std::unique_ptr<AbstractIntegralCalculator> IntegrationMethodFactory::createInte
 }
 
 IntegrationMethod IntegrationMethodFactory::parseMethodFromInput(const std::string& input) {
-    if (input == "rectangle")
+    std::string trimmedInput = trimAndToLowerCase(input);
+
+    if (trimmedInput == "rectangle")
         return IntegrationMethod::rectangle;
-    if (input == "trapezoidal")
+    if (trimmedInput == "trapezoidal")
         return IntegrationMethod::trapezoidal;
-    if (input == "Monte Carlo")
+    if (trimmedInput == "montecarlo")
         return IntegrationMethod::monteCarlo;
 
     throw std::invalid_argument("Unknown method: " + input);
