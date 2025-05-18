@@ -6,7 +6,7 @@
 
 #include <stdexcept>
 
-#include "TrapezoidKernel.cuh"
+#include "TrapezoidalKernel.cuh"
 #include "Constants.cuh"
 
 double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, double b, int n) {
