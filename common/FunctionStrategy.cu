@@ -2,7 +2,6 @@
 // Created by Krystian on 10.05.2025.
 //
 
-#include <stdexcept>
 #include "FunctionStrategy.cuh"
 
 __device__ double squareFunction(double x) {
@@ -20,6 +19,6 @@ __device__ DoubleFunctionPtr FunctionStrategy::getFunctionReference(FunctionType
         case FunctionType::cubic:
             return cubicFunction;
         default:
-            throw new std::invalid_argument("Unknown function type.");
+            return nullptr;
     }
 }
