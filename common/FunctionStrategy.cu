@@ -2,7 +2,6 @@
 // Created by Krystian on 10.05.2025.
 //
 
-#include <stdexcept>
 #include "FunctionStrategy.cuh"
 
 __device__ double squareFunction(double x) {
