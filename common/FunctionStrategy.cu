@@ -20,6 +20,6 @@ __device__ DoubleFunctionPtr FunctionStrategy::getFunctionReference(FunctionType
         case FunctionType::cubic:
             return cubicFunction;
         default:
-            throw new std::invalid_argument("Unknown function type.");
+            return nullptr;
     }
 }
