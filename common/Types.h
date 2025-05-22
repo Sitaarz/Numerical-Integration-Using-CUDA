@@ -10,12 +10,19 @@ using DoubleFunctionPtr = double (*)(double);
 enum class FunctionType {
     square,
     cubic,
+    sinus,
+    cosinus,
+    exponential,
+    hyperbolic,
+    logarithm,
+    squareRoot,
 };
 
 enum class IntegrationMethod {
     rectangle,
     trapezoidal,
-    monteCarlo
+    monteCarlo,
+	gaussianQuadrature
 };
 
 #endif // TYPES_H
