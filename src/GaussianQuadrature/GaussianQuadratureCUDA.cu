@@ -5,16 +5,15 @@
 #include "../Constants.cuh"
 
 double GaussianQuadratureCUDA::calculate(FunctionType functionType, double a, double b, int n) {
-    if (n <= 0) {
-        throw std::invalid_argument("n must be positive");
-    }
     if (b <= a) {
         throw std::invalid_argument("b must be greater than a");
     }
     if (n < MIN_NODES) {
         throw std::invalid_argument("n must be at least " + std::to_string(MIN_NODES));
+    }
     if (n > MAX_NODES) {
         throw std::invalid_argument("n must be at most " + std::to_string(MAX_NODES));
+    }
 
     double* d_results;
     cudaError_t error = cudaMalloc(&d_results, n * sizeof(double));
@@ -88,7 +87,7 @@ double GaussianQuadratureCUDA::calculate(FunctionType functionType, double a, do
         sum += h_results[i];
     }
 
-    double h = 0.5f * (b - a);
+    double h = 0.5 * (b - a);
     double integral = sum * h;
 
     delete[] h_results;

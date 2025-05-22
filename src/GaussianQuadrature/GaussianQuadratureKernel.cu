@@ -9,6 +9,6 @@ __global__ void gaussianQuadratureKernel(FunctionType functionType, double a, do
     if (idx < n) {
         double x_i = nodes[idx];
         double w_i = weights[idx];
-        results[idx] = w_i * (*function)(0.5f * ((b - a) * x_i + (b + a)));
+        results[idx] = w_i * (*function)(0.5 * ((b - a) * x_i + (b + a)));
     }
 } 
