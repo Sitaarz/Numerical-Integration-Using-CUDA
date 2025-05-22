@@ -45,10 +45,11 @@ void testSimpsonMethod() {
     // tests
 }
 
-void main() {
+int main() {
     testGaussianQuadrature();
     testMonteCarloMethod();
     testTrapezoidalMethod();
     testRectangleMethod();
     // testSimpsonMethod();
+    return 0;
 }
