@@ -3,7 +3,7 @@
 #include "../../common/FunctionStrategy.cuh"
 #include "../Constants.cuh"
 
-double GaussianQuadratureSequential::calculate(FunctionType functionType, double a, double b, int n) {
+double GaussianQuadratureSequential::calculate(FunctionType functionType, double a, double b, int n, bool test) {
     if (b <= a) {
         throw std::invalid_argument("b must be greater than a");
     }

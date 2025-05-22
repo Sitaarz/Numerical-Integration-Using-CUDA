@@ -4,7 +4,7 @@
 #include "GaussianQuadratureKernel.cuh"
 #include "../Constants.cuh"
 
-double GaussianQuadratureCUDA::calculate(FunctionType functionType, double a, double b, int n) {
+double GaussianQuadratureCUDA::calculate(FunctionType functionType, double a, double b, int n, bool test) {
     if (b <= a) {
         throw std::invalid_argument("b must be greater than a");
     }

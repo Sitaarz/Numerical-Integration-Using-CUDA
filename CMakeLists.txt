@@ -29,6 +29,9 @@ add_executable(Numerical_Integration_Using_CUDA main.cu
         src/GaussianQuadrature/GaussianQuadratureKernel.cuh
         src/GaussianQuadrature/GaussianQuadratureSequential.cu
         src/GaussianQuadrature/GaussianQuadratureSequential.cuh
+        src/tests/unitTests.cu
+        src/tests/unitTests.cuh
+        src/tests/efficiencyTest.cu
         common/Utils.h
 )
 set_target_properties(Numerical_Integration_Using_CUDA PROPERTIES

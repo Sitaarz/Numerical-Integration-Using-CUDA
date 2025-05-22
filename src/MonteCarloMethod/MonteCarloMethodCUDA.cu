@@ -4,7 +4,7 @@
 #include "MonteCarloKernel.cuh"
 #include "../Constants.cuh"
 
-double MonteCarloMethodCUDA::calculate(FunctionType functionType, double a, double b, int n) {
+double MonteCarloMethodCUDA::calculate(FunctionType functionType, double a, double b, int n, bool test) {
     if (n <= 0) {
         throw std::invalid_argument("n must be positive");
     }
@@ -20,7 +20,21 @@ double MonteCarloMethodCUDA::calculate(FunctionType functionType, double a, doub
 
     int blocksPerGrid = (n + BLOCK_SIZE - 1) / BLOCK_SIZE;
 
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
+    cudaEventRecord(start);
+
     monteCarloKernel<<<blocksPerGrid, BLOCK_SIZE>>>(functionType, a, b, n, d_results);
+
+    cudaEventRecord(stop);
+
+    cudaEventSynchronize(stop);
+    float ms = 0;
+    cudaEventElapsedTime(&ms , start , stop);
+
+    if (test) std::cout << "Time: " << ms << " ms" << std::endl;
 
     error = cudaGetLastError();
     if (error != cudaSuccess) {

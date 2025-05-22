@@ -5,7 +5,7 @@
 
 class GaussianQuadratureSequential final: public AbstractIntegralCalculator {
 public:
-    double calculate(FunctionType functionType, double a, double b, int n) override;
+    double calculate(FunctionType functionType, double a, double b, int n, bool test) override;
 };
 
 #endif // GAUSSIAN_QUADRATURE_SEQUENTIAL_CUH
