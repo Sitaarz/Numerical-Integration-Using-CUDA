@@ -21,6 +21,10 @@ add_executable(Numerical_Integration_Using_CUDA main.cu
         src/MonteCarloMethod/MonteCarloMethodCUDA.cuh
         src/MonteCarloMethod/MonteCarloKernel.cu
         src/MonteCarloMethod/MonteCarloKernel.cuh
+        src/GaussianQuadrature/GaussianQuadratureCUDA.cu
+        src/GaussianQuadrature/GaussianQuadratureCUDA.cuh
+        src/GaussianQuadrature/GaussianQuadratureKernel.cu
+        src/GaussianQuadrature/GaussianQuadratureKernel.cuh
         common/Utils.h
 )
 set_target_properties(Numerical_Integration_Using_CUDA PROPERTIES

@@ -10,7 +10,7 @@ int main() {
     double b = 0.0f;
     int n = 0;
 
-    std::cout << "Set integration method (Rectangle, Trapezoidal, MonteCarlo): ";
+    std::cout << "Set integration method (Rectangle, Trapezoidal, MonteCarlo, GaussianQuadrature): ";
     std::cin >> method;
 
     std::cout << "Set lower bound (a): ";
@@ -20,6 +20,7 @@ int main() {
     std::cin >> b;
 
     // TODO in case of Monte Carlo its more like a number of random points
+	// TODO in case of Gaussian Quadrature its more like a number of nodes
     std::cout << "Set number of intervals (n): ";
     std::cin >> n;
 
