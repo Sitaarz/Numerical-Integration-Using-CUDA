@@ -3,6 +3,7 @@
 #include "MonteCarloMethodSequential.cuh"
 #include "../../common/FunctionStrategy.cuh"
 #include <chrono>
+#include <iostream>
 
 double MonteCarloMethodSequential::calculate(FunctionType functionType, double a, double b, int n, bool test) {
     if (n <= 0) {

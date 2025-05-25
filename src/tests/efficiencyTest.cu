@@ -1,55 +1,59 @@
 #include <iostream>
-#include "common/IntegrationMethodFactory.h"
-#include "src/AbstractIntegralCalculator.h"
-#include "common/Types.h"
+#include "../MonteCarloMethod/MonteCarloMethodSequential.cuh"
 
-void testGaussianQuadrature() {
-    std::unique_ptr<AbstractIntegralCalculator> calculator =
-        IntegrationMethodFactory::createIntegralCalculator("GaussianQuadrature");
+#include "../../common/IntegrationMethodFactory.h"
+#include "../../common/Types.h"
 
-    // tests
+namespace efficiencyTest {
+    void testGaussianQuadrature() {
+        std::unique_ptr<AbstractIntegralCalculator> calculator =
+            IntegrationMethodFactory::createIntegralCalculator("GaussianQuadrature");
+
+        // tests
+    }
+
+    void testMonteCarloMethod() {
+        std::unique_ptr<AbstractIntegralCalculator> parallelCalculator =
+            IntegrationMethodFactory::createIntegralCalculator("MonteCarlo");
+
+        std::unique_ptr<AbstractIntegralCalculator> sequentialCalculator =
+            std::make_unique<MonteCarloMethodSequential>();
+
+        std::cout << "Monte Carlo method" << std::endl;
+        std::cout << "[PARALLEL] ";
+        parallelCalculator->calculate(FunctionType::square, 0, 2, 100000, true);
+        std::cout << "[SEQUENTIAL] ";
+        sequentialCalculator->calculate(FunctionType::square, 0, 2, 100000, true);
+    }
+
+    void testTrapezoidalMethod() {
+        std::unique_ptr<AbstractIntegralCalculator> calculator =
+            IntegrationMethodFactory::createIntegralCalculator("Trapezoidal");
+
+        // tests
+    }
+
+    void testRectangleMethod() {
+        std::unique_ptr<AbstractIntegralCalculator> calculator =
+            IntegrationMethodFactory::createIntegralCalculator("Rectangle");
+
+        // tests
+    }
+
+    void testSimpsonMethod() {
+        std::unique_ptr<AbstractIntegralCalculator> calculator =
+            IntegrationMethodFactory::createIntegralCalculator("Simpson");
+
+        // tests
+    }
 }
 
-void testMonteCarloMethod() {
-    std::unique_ptr<AbstractIntegralCalculator> parallelCalculator =
-        IntegrationMethodFactory::createIntegralCalculator("MonteCarlo");
-
-    std::unique_ptr<AbstractIntegralCalculator> sequentialCalculator =
-        std::make_unique<MonteCarloMethodSequential>();
-
-    std::cout << "Monte Carlo method" << std::endl;
-    std::cout << "[PARALLEL] ";
-    parallelCalculator->calculate(FunctionType::square, 0, 2, 100000, true);
-    std::cout << "[SEQUENTIAL] ";
-    sequentialCalculator->calculate(FunctionType::square, 0, 2, 100000, true);
-}
-
-void testTrapezoidalMethod() {
-    std::unique_ptr<AbstractIntegralCalculator> calculator =
-        IntegrationMethodFactory::createIntegralCalculator("Trapezoidal");
-
-    // tests
-}
-
-void testRectangleMethod() {
-    std::unique_ptr<AbstractIntegralCalculator> calculator =
-        IntegrationMethodFactory::createIntegralCalculator("Rectangle");
-
-    // tests
-}
-
-void testSimpsonMethod() {
-    std::unique_ptr<AbstractIntegralCalculator> calculator =
-        IntegrationMethodFactory::createIntegralCalculator("Simpson");
-
-    // tests
-}
-
-int main() {
-    testGaussianQuadrature();
-    testMonteCarloMethod();
-    testTrapezoidalMethod();
-    testRectangleMethod();
-    // testSimpsonMethod();
-    return 0;
-}
+// int main() {
+//     using namespace efficiencyTest;
+//     testGaussianQuadrature();
+//     testMonteCarloMethod();
+//     testTrapezoidalMethod();
+//     testRectangleMethod();
+//     // testSimpsonMethod();
+//     return 0;
+// }

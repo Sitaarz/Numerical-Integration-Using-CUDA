@@ -1,5 +1,8 @@
 #include <stdexcept>
 #include "GaussianQuadratureSequential.cuh"
+
+#include <string>
+
 #include "../../common/FunctionStrategy.cuh"
 #include "../Constants.cuh"
 

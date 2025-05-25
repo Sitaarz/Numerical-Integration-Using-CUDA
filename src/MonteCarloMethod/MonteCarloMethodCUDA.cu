@@ -1,6 +1,9 @@
 #include <stdexcept>
 #include <cuda_runtime.h>
 #include "MonteCarloMethodCUDA.cuh"
+
+#include <iostream>
+
 #include "MonteCarloKernel.cuh"
 #include "../Constants.cuh"
 

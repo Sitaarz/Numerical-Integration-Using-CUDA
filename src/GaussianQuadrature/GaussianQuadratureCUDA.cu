@@ -1,6 +1,9 @@
 #include <stdexcept>
 #include <cuda_runtime.h>
 #include "GaussianQuadratureCUDA.cuh"
+
+#include <string>
+
 #include "GaussianQuadratureKernel.cuh"
 #include "../Constants.cuh"
 
