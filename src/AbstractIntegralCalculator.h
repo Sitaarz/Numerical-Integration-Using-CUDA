@@ -9,7 +9,7 @@
 
 class AbstractIntegralCalculator {
 public:
-    virtual double calculate(FunctionType functionType, double a, double b, int n) = 0;
+    virtual double calculate(FunctionType functionType, double a, double b, int n, bool test = false) = 0;
     virtual ~AbstractIntegralCalculator() = default;
 };
 

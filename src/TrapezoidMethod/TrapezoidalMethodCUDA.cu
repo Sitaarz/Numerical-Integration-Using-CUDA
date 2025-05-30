@@ -9,7 +9,7 @@
 #include "TrapezoidalKernel.cuh"
 #include "../Constants.cuh"
 
-double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, double b, int n) {
+double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, double b, int n, bool test) {
     if (n <= 0) {
         throw std::invalid_argument("n must be positive");
     }
