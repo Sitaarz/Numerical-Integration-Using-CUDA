@@ -22,7 +22,8 @@ enum class IntegrationMethod {
     rectangle,
     trapezoidal,
     monteCarlo,
-	gaussianQuadrature
+	gaussianQuadrature,
+    simpson
 };
 
 #endif // TYPES_H

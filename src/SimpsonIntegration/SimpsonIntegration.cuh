@@ -1,20 +1,24 @@
 //
-// Created by Krystian on 12.05.2025.
+// Created by Krystian on 31.05.2025.
 //
 
-#ifndef TRAPEZOIDMETHODCUDA_CUH
-#define TRAPEZOIDMETHODCUDA_CUH
+#ifndef SIMPSONINTEGRATION_H
+#define SIMPSONINTEGRATION_H
+
 #include "../AbstractIntegralCalculator.h"
 
-class TrapezoidalMethodCUDA final: public AbstractIntegralCalculator {
+class SimpsonIntegration final: public AbstractIntegralCalculator{
+    double sumArrayDouble(const double* h_data, int n);
     cudaEvent_t start, stop;
     float timeElapsed;
 public:
     double calculate(FunctionType functionType, double a, double b, int n, bool test) override;
-    TrapezoidalMethodCUDA() {
+    SimpsonIntegration() {
         cudaEventCreate(&start);
         cudaEventCreate(&stop);
     }
 };
 
-#endif //TRAPEZOIDMETHODCUDA_CUH
+
+
+#endif //SIMPSONINTEGRATION_H

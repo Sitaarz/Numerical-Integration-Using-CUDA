@@ -4,6 +4,7 @@
 
 #include "TrapezoidalMethodCUDA.cuh"
 
+#include <iostream>
 #include <stdexcept>
 
 #include "TrapezoidalKernel.cuh"
@@ -19,6 +20,9 @@ double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, dou
 
     double* d_results;
     double delta = (b - a) / n;
+
+    cudaEventRecord(start, 0);
+
 
     cudaError_t error = cudaMalloc(&d_results, n * sizeof(double));
     if (error != cudaSuccess) {
@@ -55,6 +59,14 @@ double TrapezoidalMethodCUDA::calculate(FunctionType functionType, double a, dou
 
     delete[] h_results;
     cudaFree(d_results);
+
+    cudaEventRecord(stop, 0);
+    cudaEventSynchronize(stop);
+    cudaEventElapsedTime(&timeElapsed, start, stop);
+
+    if (test) {
+        std::cout << "Time " << timeElapsed << " ms" << std::endl;
+    }
 
     return integral;
 }
