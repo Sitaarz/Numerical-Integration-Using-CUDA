@@ -10,10 +10,17 @@
 
 namespace efficiencyTest {
     void testGaussianQuadrature() {
-        std::unique_ptr<AbstractIntegralCalculator> calculator =
+        std::unique_ptr<AbstractIntegralCalculator> parallelCalculator =
             IntegrationMethodFactory::createIntegralCalculator("GaussianQuadrature");
 
-        // tests
+        std::unique_ptr<AbstractIntegralCalculator> sequentialCalculator =
+            std::make_unique<GaussianQuadratureSequential>();
+
+        std::cout << "Gaussian quadrature" << std::endl;
+        std::cout << "[PARALLEL] ";
+        parallelCalculator->calculate(FunctionType::square, 0, 1, 8, true);
+        std::cout << "[SEQUENTIAL] ";
+        sequentialCalculator->calculate(FunctionType::square, 0, 1, 8, true);
     }
 
     void testMonteCarloMethod() {
