@@ -57,7 +57,21 @@ double GaussianQuadratureCUDA::calculate(FunctionType functionType, double a, do
 
     int blocksPerGrid = (n + BLOCK_SIZE - 1) / BLOCK_SIZE;
 
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
+    cudaEventRecord(start);
+
     gaussianQuadratureKernel<<<blocksPerGrid, BLOCK_SIZE>>>(functionType, a, b, n, d_results, d_nodes, d_weights);
+
+    cudaEventRecord(stop);
+
+    cudaEventSynchronize(stop);
+    float ms = 0;
+    cudaEventElapsedTime(&ms , start , stop);
+
+    if (test) std::cout << "Time: " << ms << " ms" << std::endl;
 
     error = cudaGetLastError();
     if (error != cudaSuccess) {
