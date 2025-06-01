@@ -6,7 +6,7 @@
 
 class UnitTest {
 public:
-    static void assertEqual(int actual, int expected, double delta, const std::string& testName) {
+    static void assertEqual(double actual, double expected, double delta, const std::string& testName) {
         if (actual <= expected + delta && actual >= expected - delta) {
             std::cout << "[PASS] " << testName << std::endl;
         } else {
@@ -15,5 +15,4 @@ public:
         }
     }
 };
-
 #endif // UNIT_TEST_CUH
