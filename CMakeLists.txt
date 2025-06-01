@@ -29,10 +29,20 @@ add_executable(Numerical_Integration_Using_CUDA main.cu
         src/GaussianQuadrature/GaussianQuadratureKernel.cuh
         src/GaussianQuadrature/GaussianQuadratureSequential.cu
         src/GaussianQuadrature/GaussianQuadratureSequential.cuh
-        src/tests/unitTests.cu
-        src/tests/unitTests.cuh
-        src/tests/efficiencyTest.cu
+        tests/unitTests.cu
+        tests/unitTests.cuh
+        tests/efficiencyTest.cu
         common/Utils.h
+        src/SimpsonIntegration/SimpsonIntegration.cu
+        src/SimpsonIntegration/SimpsonIntegration.cuh
+        src/SimpsonIntegration/SimpsonIntegrationSequential.cu
+        src/SimpsonIntegration/SimpsonIntegrationSequential.cuh
+        src/RectangleMethod/RectangleMethodSequential.cu
+        src/RectangleMethod/RectangleMethodSequential.cuh
+        src/TrapezoidMethod/TrapezoidalMethodSequential.cu
+        src/TrapezoidMethod/TrapezoidalMethodSequential.cuh
+        common/Kernels.cuh
+        common/Kernels.cu
 )
 set_target_properties(Numerical_Integration_Using_CUDA PROPERTIES
         CUDA_SEPARABLE_COMPILATION ON)

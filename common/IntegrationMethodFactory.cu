@@ -10,6 +10,7 @@
 #include "../src/TrapezoidMethod/TrapezoidalMethodCUDA.cuh"
 #include "../src/MonteCarloMethod/MonteCarloMethodCUDA.cuh"
 #include "../src/GaussianQuadrature/GaussianQuadratureCUDA.cuh"
+#include "../src/SimpsonIntegration/SimpsonIntegration.cuh"
 #include "Utils.h"
 
 // IntegrationMethodFactory.cu
@@ -25,6 +26,8 @@ std::unique_ptr<AbstractIntegralCalculator> IntegrationMethodFactory::createInte
             return std::make_unique<MonteCarloMethodCUDA>();
         case IntegrationMethod::gaussianQuadrature:
             return std::make_unique<GaussianQuadratureCUDA>();
+        case IntegrationMethod::simpson:
+            return std::make_unique<SimpsonIntegration>();
         default:
             throw std::invalid_argument("Invalid integral calculator method");
     }
@@ -41,6 +44,8 @@ IntegrationMethod IntegrationMethodFactory::parseMethodFromInput(const std::stri
         return IntegrationMethod::monteCarlo;
     if (trimmedInput == "gaussianquadrature")
         return IntegrationMethod::gaussianQuadrature;
+    if (trimmedInput == "simpson")
+        return IntegrationMethod::simpson;
 
     throw std::invalid_argument("Unknown method: " + input);
 }
