@@ -2,11 +2,12 @@
 
 #include "../src/MonteCarloMethod/MonteCarloMethodSequential.cuh"
 #include "../src/SimpsonIntegration/SimpsonIntegrationSequential.cuh"
+#include "../src/RectangleMethod/RectangleMethodSequential.cuh"
+#include "../src/TrapezoidMethod/TrapezoidalMethodSequential.cuh"
+#include "../src/GaussianQuadrature/GaussianQuadratureSequential.cuh"
 
 #include "../common/IntegrationMethodFactory.h"
 #include "../common/Types.h"
-#include "../src/RectangleMethod/RectangleMethodSequential.cuh"
-#include "../src/TrapezoidMethod/TrapezoidalMethodSequential.cuh"
 
 namespace efficiencyTest {
     void testGaussianQuadrature() {

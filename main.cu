@@ -11,7 +11,7 @@ int main() {
     double b = 0.0f;
     int n = 0;
 
-    std::cout << "Set integration method (Rectangle, Trapezoidal, MonteCarlo, GaussianQuadrature): ";
+    std::cout << "Set integration method (Rectangle, Trapezoidal, MonteCarlo, GaussianQuadrature, Simpson): ";
     std::cin >> method;
 
     std::cout << "Set function (square, cubic, sinus, cosinus, exponential, hyperbolic, logarithm, squareRoot): ";
