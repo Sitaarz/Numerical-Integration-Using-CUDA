@@ -23,7 +23,7 @@ int main() {
     std::cout << "Set upper bound (b): ";
     std::cin >> b;
 
-    std::cout << "Set number of intervals/random points/nodes (n): ";
+    std::cout << "Set number of intervals/random points/nodes/inputs (n): ";
     std::cin >> n;
 
     try {
