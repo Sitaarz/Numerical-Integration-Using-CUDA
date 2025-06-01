@@ -2,6 +2,8 @@
 #include "GaussianQuadratureSequential.cuh"
 
 #include <string>
+#include <chrono>
+#include <iostream>
 
 #include "../../common/FunctionStrategy.cuh"
 #include "../Constants.cuh"
@@ -17,6 +19,8 @@ double GaussianQuadratureSequential::calculate(FunctionType functionType, double
         throw std::invalid_argument("n must be at most " + std::to_string(MAX_NODES));
     }
 
+    auto start = std::chrono::high_resolution_clock::now();
+
     DoubleFunctionPtr function = FunctionStrategy::getFunctionReference(functionType);
     double sum = 0.0;
     double h = 0.5 * (b - a);
@@ -28,6 +32,10 @@ double GaussianQuadratureSequential::calculate(FunctionType functionType, double
         double w_i = weights[i];
         sum += w_i * (*function)(h * x_i + c);
     }
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    if (test) std::cout << "Time: " << duration.count() << " ms" << std::endl;
 
     return h * sum;
 }
