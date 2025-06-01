@@ -2,18 +2,26 @@
 
 #include "../src/MonteCarloMethod/MonteCarloMethodSequential.cuh"
 #include "../src/SimpsonIntegration/SimpsonIntegrationSequential.cuh"
+#include "../src/RectangleMethod/RectangleMethodSequential.cuh"
+#include "../src/TrapezoidMethod/TrapezoidalMethodSequential.cuh"
+#include "../src/GaussianQuadrature/GaussianQuadratureSequential.cuh"
 
 #include "../common/IntegrationMethodFactory.h"
 #include "../common/Types.h"
-#include "../src/RectangleMethod/RectangleMethodSequential.cuh"
-#include "../src/TrapezoidMethod/TrapezoidalMethodSequential.cuh"
 
 namespace efficiencyTest {
     void testGaussianQuadrature() {
-        std::unique_ptr<AbstractIntegralCalculator> calculator =
+        std::unique_ptr<AbstractIntegralCalculator> parallelCalculator =
             IntegrationMethodFactory::createIntegralCalculator("GaussianQuadrature");
 
-        // tests
+        std::unique_ptr<AbstractIntegralCalculator> sequentialCalculator =
+            std::make_unique<GaussianQuadratureSequential>();
+
+        std::cout << "Gaussian quadrature" << std::endl;
+        std::cout << "[PARALLEL] ";
+        parallelCalculator->calculate(FunctionType::square, 0, 1, 8, true);
+        std::cout << "[SEQUENTIAL] ";
+        sequentialCalculator->calculate(FunctionType::square, 0, 1, 8, true);
     }
 
     void testMonteCarloMethod() {

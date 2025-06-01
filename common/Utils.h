@@ -7,9 +7,10 @@
 
 #include <string>
 #include <algorithm>
-#include <cctype>
+#include <stdexcept>
+#include "Types.h"
 
-std::string trimAndToLowerCase(const std::string& input) {
+inline std::string trimAndToLowerCase(const std::string& input) {
     size_t start = input.find_first_not_of(" \t\n\r");
     size_t end = input.find_last_not_of(" \t\n\r");
 
@@ -24,4 +25,30 @@ std::string trimAndToLowerCase(const std::string& input) {
 
     return trimmed;
 }
+
+inline FunctionType getFunctionType(const std::string& functionName) {
+    std::string trimmedFunctionName = trimAndToLowerCase(functionName);
+
+    if (trimmedFunctionName == "square") {
+        return FunctionType::square;
+    } else if (trimmedFunctionName == "cubic") {
+        return FunctionType::cubic;
+    } else if (trimmedFunctionName == "sinus") {
+        return FunctionType::sinus;
+    } else if (trimmedFunctionName == "cosinus") {
+        return FunctionType::cosinus;
+    } else if (trimmedFunctionName == "exponential") {
+        return FunctionType::exponential;
+    } else if (trimmedFunctionName == "hyperbolic") {
+        return FunctionType::hyperbolic;
+    } else if (trimmedFunctionName == "logarithm") {
+        return FunctionType::logarithm;
+    } else if (trimmedFunctionName == "squareroot") {
+        return FunctionType::squareRoot;
+    } else {
+        throw std::invalid_argument("Invalid function name");
+    }
+}
+
+
 #endif //UTILS_H

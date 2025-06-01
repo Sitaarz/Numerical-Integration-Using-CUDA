@@ -2,16 +2,20 @@
 #include <memory>
 #include "common/IntegrationMethodFactory.h"
 #include "common/Types.h"
+#include "common/Utils.h"
 #include "src/AbstractIntegralCalculator.h"
 
 int main() {
-    std::string method;
+    std::string method, functionName;
     double a = 0.0f;
     double b = 0.0f;
     int n = 0;
 
-    std::cout << "Set integration method (Rectangle, Trapezoidal, MonteCarlo, GaussianQuadrature): ";
+    std::cout << "Set integration method (Rectangle, Trapezoidal, MonteCarlo, GaussianQuadrature, Simpson): ";
     std::cin >> method;
+
+    std::cout << "Set function (square, cubic, sinus, cosinus, exponential, hyperbolic, logarithm, squareRoot): ";
+    std::cin >> functionName;
 
     std::cout << "Set lower bound (a): ";
     std::cin >> a;
@@ -19,16 +23,16 @@ int main() {
     std::cout << "Set upper bound (b): ";
     std::cin >> b;
 
-    // TODO in case of Monte Carlo its more like a number of random points
-	// TODO in case of Gaussian Quadrature its more like a number of nodes
-    std::cout << "Set number of intervals (n): ";
+    std::cout << "Set number of intervals/random points/nodes (n): ";
     std::cin >> n;
 
     try {
         std::unique_ptr<AbstractIntegralCalculator> calculator =
             IntegrationMethodFactory::createIntegralCalculator(method);
 
-        double result = calculator->calculate(FunctionType::square, a, b, n);
+        FunctionType functionType = getFunctionType(functionName);
+
+        double result = calculator->calculate(functionType, a, b, n);
 
 
         std::cout << "Result: " << result << std::endl;
