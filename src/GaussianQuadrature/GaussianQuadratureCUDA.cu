@@ -3,6 +3,7 @@
 #include "GaussianQuadratureCUDA.cuh"
 
 #include <string>
+#include <iostream>
 
 #include "GaussianQuadratureKernel.cuh"
 #include "../Constants.cuh"

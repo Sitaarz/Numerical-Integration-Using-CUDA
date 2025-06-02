@@ -34,8 +34,8 @@ double GaussianQuadratureSequential::calculate(FunctionType functionType, double
     }
 
     auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    if (test) std::cout << "Time: " << duration.count() << " ms" << std::endl;
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    if (test) std::cout << "Time: " << duration.count() << " microSeconds" << std::endl;
 
     return h * sum;
 }
